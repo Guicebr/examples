@@ -3,5 +3,5 @@ from PyQt6.QtWidgets import QApplication
 
 app = QApplication([])
 engine = QQmlApplicationEngine()
-engine.load("main.qml")
+engine.load("src\\06 QML Python example\main.qml")
 app.exec()

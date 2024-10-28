@@ -28,7 +28,10 @@ window.setCentralWidget(text)
 
 file_path = None
 
+# PESTAÑA FILE
 menu = window.menuBar().addMenu("&File")
+
+# ACCION OPEN
 open_action = QAction("&Open")
 def open_file():
     global file_path
@@ -40,6 +43,7 @@ open_action.triggered.connect(open_file)
 open_action.setShortcut(QKeySequence.StandardKey.Open)
 menu.addAction(open_action)
 
+# ACCION SAVE
 save_action = QAction("&Save")
 def save():
     if file_path is None:
@@ -48,10 +52,12 @@ def save():
         with open(file_path, "w") as f:
             f.write(text.toPlainText())
         text.document().setModified(False)
+        
 save_action.triggered.connect(save)
 save_action.setShortcut(QKeySequence.StandardKey.Save)
 menu.addAction(save_action)
 
+# ACCION SAVE AS
 save_as_action = QAction("Save &As...")
 def save_as():
     global file_path
@@ -59,21 +65,26 @@ def save_as():
     if path:
         file_path = path
         save()
+        
 save_as_action.triggered.connect(save_as)
 menu.addAction(save_as_action)
 
+# ACCION CLOSE
 close = QAction("&Close")
 close.triggered.connect(window.close)
 menu.addAction(close)
 
+# Añadir HELP al menu
 help_menu = window.menuBar().addMenu("&Help")
+
+# ACCION ABOUT A LA PESTAÑA HELP
 about_action = QAction("&About")
 help_menu.addAction(about_action)
 def show_about_dialog():
     text = "<center>" \
            "<h1>Text Editor</h1>" \
            "&#8291;" \
-           "<img src=icon.svg>" \
+           "<img src='src\\07 Qt Text Editor\icon.svg'>" \
            "</center>" \
            "<p>Version 31.4.159.265358<br/>" \
            "Copyright &copy; Company Inc.</p>"
